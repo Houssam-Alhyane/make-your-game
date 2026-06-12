@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/Picsart_26-01-08_22-47-52-260.png">
+    <title>arkanoid</title>
+</head>
+<body>
+
+    <div id="home-container">
+        <img id="logo" src="assets/logo.png" alt="logo">
+        <button id="play"><img src="assets/play.svg" alt=""><p>Start Game</p></button>
+    </div>
+
+    <div id="game-container">
+        <header>
+            <p>Score</p>
+            <p id="score">0</p>
+        </header>
+        <!-- field-wrap holds the grid + absolutely positioned ball/paddle -->
+        <div id="field-wrap">
+            <div id="container"></div>
+            <div id="ball"></div>
+            <div id="breaker"></div>
+            <p id="press-to-play">Press Space to play</p>
+        </div>
+    </div>
+
+    <div id="final-game-container">
+        <p id="final-game-title">You Win!</p>
+
+    </div>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>
