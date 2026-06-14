@@ -13,11 +13,11 @@ export function startLoop(state) {
         let nx = bp.left + state.dx
         let ny = bp.top  + state.dy
 
-        // walls
-        if (nx + bp.width >= W) { nx = W - bp.width; state.dx = -Math.abs(state.dx) }
-        if (nx <= 0)             { nx = 0;             state.dx =  Math.abs(state.dx) }
-        if (ny <= 0)             { ny = 0;              state.dy =  Math.abs(state.dy) }
-        if (ny + bp.height >= H) { resetBall(state); return }
+        // walls heck if the ball touch Edges
+        if (nx + bp.width >= W) { nx = W - bp.width; state.dx = -Math.abs(state.dx) }//check if touch from rigth
+        if (nx <= 0)             { nx = 0;             state.dx =  Math.abs(state.dx) }//check if touch from left
+        if (ny <= 0)             { ny = 0;              state.dy =  Math.abs(state.dy) }//check if touch from top
+        if (ny + bp.height >= H) { resetBall(state); return }////check if touch from botom
 
         // paddle
         state.bp = bp; state.pp = pp
