@@ -26,7 +26,11 @@ export function startLoop(state) {
         ball.style.left = nx + 'px'
         ball.style.top  = ny + 'px'
 
-     
+        // bricks
+        const b2 = state.toField(ball.getBoundingClientRect())
+        hitBricks(state, b2, state.layers, scoreEl)
+
+
     }
 
     state.raf = requestAnimationFrame(loop)
