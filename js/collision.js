@@ -2,13 +2,15 @@ export function hitPaddle(state, nx, ny) {
   //bp=ball postion ;pp=paddle postion
   const { bp, pp } = state;
   const bcx = nx + bp.width / 2; //centre of the ball
+  //ny + bp.height==bottom
+  //    bcx >= pp.left && bcx <= pp.right check if ball inside the paddle
   if (
     ny + bp.height >= pp.top &&
     bp.top <= pp.top &&
     bcx >= pp.left &&
     bcx <= pp.right
   ) {
-    const r = (bcx - pp.left) / pp.width;
+    const r = (bcx - pp.left) / pp.width; //what part ball hit the paddle
     if (r < 1 / 7) {
       state.dx = -4;
       state.dy = -4;
@@ -36,6 +38,7 @@ export function hitBricks(state, b2, layers, scoreEl) {
         row.splice(i, 1);
         continue;
       }
+
       const br = state.toField(brick.getBoundingClientRect());
       if (
         b2.right > br.left &&
@@ -48,6 +51,7 @@ export function hitBricks(state, b2, layers, scoreEl) {
         scoreEl.innerHTML = +scoreEl.innerHTML + 50;
         const ox = Math.min(b2.right, br.right) - Math.max(b2.left, br.left);
         const oy = Math.min(b2.bottom, br.bottom) - Math.max(b2.top, br.top);
+        //check if the ball hit up or down change  or left or right
         if (oy < ox) state.dy = -state.dy;
         else state.dx = -state.dx;
         return;
