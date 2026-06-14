@@ -30,6 +30,14 @@ export function startLoop(state) {
         const b2 = state.toField(ball.getBoundingClientRect())
         hitBricks(state, b2, state.layers, scoreEl)
 
+        // win check
+        if (!document.getElementsByClassName('brick').length) {
+            overTitle.innerText    = 'You Win!'
+            over.style.display     = 'flex'
+            cancelAnimationFrame(state.raf)
+            return
+        }
+
 
     }
 
