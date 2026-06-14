@@ -19,6 +19,14 @@ export function startLoop(state) {
         if (ny <= 0)             { ny = 0;              state.dy =  Math.abs(state.dy) }
         if (ny + bp.height >= H) { resetBall(state); return }
 
+        // paddle
+        state.bp = bp; state.pp = pp
+        hitPaddle(state, nx, ny)
+
+        ball.style.left = nx + 'px'
+        ball.style.top  = ny + 'px'
+
+     
     }
 
     state.raf = requestAnimationFrame(loop)
