@@ -39,8 +39,8 @@ export function startLoop(state) {
         }
 
         // paddle move
-        if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 6) + 'px'
-        if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 6) + 'px'
+        if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 10) + 'px'
+        if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 10) + 'px'
 
         state.raf = requestAnimationFrame(loop)
     }
