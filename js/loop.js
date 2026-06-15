@@ -30,6 +30,19 @@ export function startLoop(state) {
         const b2 = state.toField(ball.getBoundingClientRect())
         hitBricks(state, b2, state.layers, scoreEl)
 
+        //movment speed
+        const bricksCount = document.getElementsByClassName('brick').length;
+        if (bricksCount > 55) {
+             state.dx = 4 * Math.sign(state.dx);
+             state.dy = 4 * Math.sign(state.dy);
+        } else if (bricksCount>25){
+             state.dx = 6 * Math.sign(state.dx);
+             state.dy = 6 * Math.sign(state.dy);
+        } else{
+             state.dx =8 * Math.sign(state.dx);
+             state.dy = 8 * Math.sign(state.dy);
+            }
+
         // win check
         if (!document.getElementsByClassName('brick').length) {
             overTitle.innerText    = 'You Win!'
@@ -39,9 +52,12 @@ export function startLoop(state) {
         }
 
         // paddle move
-        if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 10) + 'px'
-        if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 10) + 'px'
-
+        if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 12) + 'px'
+        if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 12) + 'px'
+        //paddle border
+        if (pp.left < 0) breaker.style.left = '-1px'
+        if (pp.right > W) breaker.style.left = (W - pp.width) + 'px'
+        
         state.raf = requestAnimationFrame(loop)
     }
 
