@@ -28,7 +28,10 @@ const state = {
     return toField(this.field, r);
   },
 };
-
+const music = new Audio('../assets/K.O..mp3');
+music.volume=0.3
+music.loop=true
+music.play();
 // buttons
 $('play').addEventListener('click', () => init(state));
 
