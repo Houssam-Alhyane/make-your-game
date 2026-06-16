@@ -55,9 +55,7 @@ export function startLoop(state) {
         if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 12) + 'px'
         if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 12) + 'px'
         //paddle border
-        if (pp.left < 0) breaker.style.left = '-1px'
-        if (pp.right > W) breaker.style.left = (W - pp.width) + 'px'
-        
+        if (pp.left < 0) breaker.style.left = '-1px'        
         state.raf = requestAnimationFrame(loop)
     }
 
