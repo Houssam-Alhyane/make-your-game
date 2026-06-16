@@ -33,4 +33,3 @@ const state = {
 $('play').addEventListener('click', () => init(state));
 
 setupInput(state);
-console.log(state);
