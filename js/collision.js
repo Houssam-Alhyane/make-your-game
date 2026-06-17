@@ -25,32 +25,48 @@ export function hitPaddle(state, nx, ny) {
 }
 
 export function hitBricks(state, b2, layers, scoreEl) {
+  const bp = state.bp; // ball's rect before this frame's move
+  let flipX = false;
+  let flipY = false;
+  let hitAny = false;
+
   for (const layer of layers) {
     const row = layer.bricks;
     for (let i = row.length - 1; i >= 0; i--) {
       const brick = row[i];
       const br = state.toField(brick.getBoundingClientRect());
-      if (
+
+      const overlapping =
         b2.right > br.left &&
         b2.left < br.right &&
         b2.bottom > br.top &&
-        b2.top < br.bottom
-      ) {
-        brick.remove();
-        row.splice(i, 1);
-        scoreEl.innerHTML = +scoreEl.innerHTML + 50;
+        b2.top < br.bottom;
 
-        const hitSound = new Audio('../assets/paddle.wav');
-        hitSound.currentTime = 0;
-        hitSound.play();
-        
-        const ox = Math.min(b2.right, br.right) - Math.max(b2.left, br.left);
-        const oy = Math.min(b2.bottom, br.bottom) - Math.max(b2.top, br.top);
-        //check if the ball hit up or down change  or left or right
-        if (oy < ox) state.dy = -state.dy;
-        else state.dx = -state.dx;
-        return;
-      }
+      if (!overlapping) continue;
+
+      const cameFromLeft = bp.right <= br.left;
+      const cameFromRight = bp.left >= br.right;
+      const cameFromTop = bp.bottom <= br.top;
+      const cameFromBottom = bp.top >= br.bottom;
+
+      if (cameFromLeft || cameFromRight) flipX = true;
+      if (cameFromTop || cameFromBottom) flipY = true;
+      if (!cameFromLeft && !cameFromRight && !cameFromTop && !cameFromBottom)
+        flipY = true; 
+
+      brick.remove();
+      row.splice(i, 1);
+      scoreEl.innerHTML = +scoreEl.innerHTML + 50;
+      hitAny = true;
     }
+  }
+
+  if (hitAny) {
+    if (flipX) state.dx = -state.dx;
+    if (flipY) state.dy = -state.dy;
+
+    const hitSound = new Audio('../assets/paddle.wav');
+    hitSound.currentTime = 0;
+    hitSound.play();
   }
 }
