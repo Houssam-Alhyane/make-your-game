@@ -36,14 +36,10 @@ export function startLoop(state) {
              state.dx = 4 * Math.sign(state.dx);
              state.dy = 4 * Math.sign(state.dy);
         } else if (bricksCount>25){
-             state.dx = 6 * Math.sign(state.dx);
-             state.dy = 6 * Math.sign(state.dy);
-        } else{
-             state.dx =8 * Math.sign(state.dx);
-             state.dy = 8 * Math.sign(state.dy);
-            }
-
-        // win check
+             state.dx = 5 * Math.sign(state.dx);
+             state.dy = 5 * Math.sign(state.dy);
+        }
+        // win check    
         if (!document.getElementsByClassName('brick').length) {
             overTitle.innerText    = 'You Win!'
             over.style.display     = 'flex'
