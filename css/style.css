@@ -60,7 +60,7 @@ header p:first-child {
   height: 600px;
   border: 1.5px solid #2a2a4a;
   border-radius: 4px;
-  background: #070712;
+  background: #000000;
   overflow: hidden;
 }
 
@@ -97,12 +97,14 @@ header p:first-child {
 
 #press-to-play {
   position: absolute;
-  bottom: 72px;
-  width: 100%;
-  text-align: center;
+  /* Center the prompt above the paddle without stretching it across the field. */
+  left: 50%;
+  top: 75%;
+  transform: translateX(-50%);
+  width: max-content;
   font-size: 1rem;
   color: #8888aa;
-  animation: pulse 1s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -178,7 +180,7 @@ button:hover {
 @keyframes pulse {
   0%,
   100% {
-    opacity: 0.2;
+    opacity: 0.5;
   }
   50% {
     opacity: 1;

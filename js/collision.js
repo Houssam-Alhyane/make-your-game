@@ -1,3 +1,12 @@
+function setBallDirection(state, x, y) {
+  // Keep total ball speed steady while changing only the direction.
+  const speed = state.ballSpeed || Math.hypot(state.dx, state.dy);
+  const length = Math.hypot(x, y) || 1;
+
+  state.dx = (x / length) * speed;
+  state.dy = (y / length) * speed;
+}
+
 export function hitPaddle(state, nx, ny) {
   //bp=ball postion ;pp=paddle postion
   const { bp, pp } = state;
@@ -7,25 +16,20 @@ export function hitPaddle(state, nx, ny) {
   if (ny + bp.height >= pp.top && bcx >= pp.left && bcx <= pp.right) {
     const r = (bcx - pp.left) / pp.width; //what part ball hit the paddle
     if (r < 1 / 7) {
-      state.dx = -4;
-      state.dy = -4;
+      setBallDirection(state, -0.9, -0.45);
     } else if (r < 2 / 7) {
-      state.dx = -2;
-      state.dy = -5;
+      setBallDirection(state, -0.55, -0.85);
     } else if (r > 6 / 7) {
-      state.dx = 4;
-      state.dy = -4;
+      setBallDirection(state, 0.9, -0.45);
     } else if (r > 5 / 7) {
-      state.dx = 2;
-      state.dy = -5;
+      setBallDirection(state, 0.55, -0.85);
     } else {
-      state.dy = -Math.abs(state.dy);
+      setBallDirection(state, state.dx, -Math.abs(state.dy));
     }
   }
 }
 
 export function hitBricks(state, b2, layers, scoreEl) {
-  const bp = state.bp; // ball's rect before this frame's move
   let flipX = false;
   let flipY = false;
   let hitAny = false;
@@ -44,19 +48,21 @@ export function hitBricks(state, b2, layers, scoreEl) {
 
       if (!overlapping) continue;
 
-      const cameFromLeft = bp.right <= br.left;
-      const cameFromRight = bp.left >= br.right;
-      const cameFromTop = bp.bottom <= br.top;
-      const cameFromBottom = bp.top >= br.bottom;
+      const overlapLeft = b2.right - br.left;
+      const overlapRight = br.right - b2.left;
+      const overlapTop = b2.bottom - br.top;
+      const overlapBottom = br.bottom - b2.top;
+      const minX = Math.min(overlapLeft, overlapRight);
+      const minY = Math.min(overlapTop, overlapBottom);
 
-      if (cameFromLeft || cameFromRight) flipX = true;
-      if (cameFromTop || cameFromBottom) flipY = true;
-      if (!cameFromLeft && !cameFromRight && !cameFromTop && !cameFromBottom)
-        flipY = true; 
+      // Bounce on the axis with the smallest overlap.
+      if (minX < minY) flipX = true;
+      else flipY = true;
 
       brick.remove();
       row.splice(i, 1);
-      scoreEl.innerHTML = +scoreEl.innerHTML + 50;
+      // Score is plain text, so textContent is safer than innerHTML
+      scoreEl.textContent = Number(scoreEl.textContent) + 50;
       hitAny = true;
     }
   }
@@ -65,8 +71,8 @@ export function hitBricks(state, b2, layers, scoreEl) {
     if (flipX) state.dx = -state.dx;
     if (flipY) state.dy = -state.dy;
 
-    const hitSound = new Audio('../assets/paddle.wav');
-    hitSound.currentTime = 0;
-    hitSound.play();
+    // Replay the shared hit sound from the start.
+    state.hitSound.currentTime = 0;
+    state.hitSound.play();
   }
 }

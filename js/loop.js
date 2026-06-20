@@ -30,15 +30,20 @@ export function startLoop(state) {
         const b2 = state.toField(ball.getBoundingClientRect())
         hitBricks(state, b2, state.layers, scoreEl)
 
-        //movment speed
+        // Increase the target speed as the player clears more bricks.
         const bricksCount = document.getElementsByClassName('brick').length;
         if (bricksCount > 55) {
-             state.dx = 4 * Math.sign(state.dx);
-             state.dy = 4 * Math.sign(state.dy);
+             state.ballSpeed = 5.7;
         } else if (bricksCount>25){
-             state.dx = 5 * Math.sign(state.dx);
-             state.dy = 5 * Math.sign(state.dy);
+             state.ballSpeed = 6.5;
+        } else {
+             state.ballSpeed = 7.2;
         }
+
+        // Normalize dx/dy so collision angle changes do not change total speed.
+        const speed = Math.hypot(state.dx, state.dy) || 1;
+        state.dx = (state.dx / speed) * state.ballSpeed;
+        state.dy = (state.dy / speed) * state.ballSpeed;
         // win check    
         if (!document.getElementsByClassName('brick').length) {
             overTitle.innerText    = 'You Win!'
@@ -47,11 +52,15 @@ export function startLoop(state) {
             return
         }
 
-        // paddle move
-        if (state.arrowRight && pp.right < W) breaker.style.left = (pp.left + 12) + 'px'
-        if (state.arrowLeft  && pp.left  > 0) breaker.style.left = (pp.left - 12) + 'px'
-        //paddle border
-        if (pp.left < 0) breaker.style.left = '-1px'        
+        // Only write paddle position while moving, and keep it inside the field.
+        if (state.arrowRight || state.arrowLeft) {
+            let nextPaddleLeft = pp.left
+            if (state.arrowRight) nextPaddleLeft += 12
+            if (state.arrowLeft) nextPaddleLeft -= 12
+            nextPaddleLeft = Math.max(0, Math.min(nextPaddleLeft, W - pp.width))
+            breaker.style.left = nextPaddleLeft + 'px'
+        }
+
         state.raf = requestAnimationFrame(loop)
     }
 

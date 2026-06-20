@@ -18,21 +18,27 @@ const state = {
 
   raf: null,
   waiting: true,
+  ballSpeed: 5.7,
   dx: 4,
   dy: -4,
   arrowLeft: false,
   arrowRight: false,
   layers: {},
+  // Reuse one sound object for brick hits instead of creating Audio every collision.
+  hitSound: new Audio('./assets/paddle.wav'),
 
   toField(r) {
     return toField(this.field, r);
   },
 };
-const music = new Audio('../assets/K.O..mp3');
-music.volume=0.3
+const music = new Audio('./assets/K.O..mp3');
+music.volume=0.1
 music.loop=true
-music.play();
 // buttons
-$('play').addEventListener('click', () => init(state));
+$('play').addEventListener('click', () => {
+  // Start music after a click so the browser does not block autoplay.
+  music.play();
+  init(state);
+});
 
 setupInput(state);
