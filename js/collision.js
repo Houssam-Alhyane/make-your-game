@@ -1,30 +1,25 @@
-function setBallDirection(state, x, y) {
-  // Keep total ball speed steady while changing only the direction.
-  const speed = state.ballSpeed || Math.hypot(state.dx, state.dy);
-  const length = Math.hypot(x, y) || 1;
-
-  state.dx = (x / length) * speed;
-  state.dy = (y / length) * speed;
-}
-
 export function hitPaddle(state, nx, ny) {
-  //bp=ball postion ;pp=paddle postion
   const { bp, pp } = state;
-  const bcx = nx + bp.width / 2; //centre of the ball
-  //ny + bp.height==bottom
-  //    bcx >= pp.left && bcx <= pp.right check if ball inside the paddle
+  const bcx = nx + bp.width / 2; // Center of the ball
+
+  // Check if the ball is hitting the paddle area
   if (ny + bp.height >= pp.top && bcx >= pp.left && bcx <= pp.right) {
-    const r = (bcx - pp.left) / pp.width; //what part ball hit the paddle
-    if (r < 1 / 7) {
-      setBallDirection(state, -0.9, -0.45);
-    } else if (r < 2 / 7) {
-      setBallDirection(state, -0.55, -0.85);
-    } else if (r > 6 / 7) {
-      setBallDirection(state, 0.9, -0.45);
-    } else if (r > 5 / 7) {
-      setBallDirection(state, 0.55, -0.85);
+    
+    // Divide the paddle into 3 equal sections (Left, Center, Right)
+    const segmentWidth = pp.width / 3;
+    const hitLocation = bcx - pp.left; // How far along the paddle the ball hit
+
+    if (hitLocation < segmentWidth) {
+      // 1. LEFT PADDLE: Force ball to go left (negative dx) and up (negative dy)
+      state.dx = -Math.abs(state.dx);
+      state.dy = -Math.abs(state.dy);
+    } else if (hitLocation > segmentWidth * 2) {
+      // 2. RIGHT PADDLE: Force ball to go right (positive dx) and up (negative dy)
+      state.dx = Math.abs(state.dx);
+      state.dy = -Math.abs(state.dy);
     } else {
-      setBallDirection(state, state.dx, -Math.abs(state.dy));
+      // 3. CENTER PADDLE: Just bounce up, keep the left/right direction as it was
+      state.dy = -Math.abs(state.dy);
     }
   }
 }
