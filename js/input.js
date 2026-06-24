@@ -1,4 +1,4 @@
-import { restart, setPause } from './actions.js';
+import { restart, setPause, toHomeScreen } from './actions.js';
 import { startLoop } from './loop.js';
 
 export function setupInput(state) {
@@ -35,5 +35,10 @@ export function setupInput(state) {
   //Restart button in the pause menu
   state.restartBtn.addEventListener('click', () => {
     restart(state);
+  });
+
+  // Home button in the pause menu
+  state.homeBtn.addEventListener('click', () => {
+    toHomeScreen(state);
   });
 }
