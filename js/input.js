@@ -1,4 +1,4 @@
-import { setPause } from './actions.js';
+import { restart, setPause } from './actions.js';
 import { startLoop } from './loop.js';
 
 export function setupInput(state) {
@@ -30,5 +30,10 @@ export function setupInput(state) {
   // Resume button in the pause menu
   state.resumeBtn.addEventListener('click', () => {
     setPause(state);
+  });
+
+  //Restart button in the pause menu
+  state.restartBtn.addEventListener('click', () => {
+    restart(state);
   });
 }
