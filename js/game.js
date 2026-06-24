@@ -16,6 +16,10 @@ const state = {
   over: $('final-game-container'),
   overTitle: $('final-game-title'),
   settings: $('settings-btn'),
+  pauseMenu: $('pause-menu'),
+  resumeBtn: $('resume-btn'),
+  restartBtn: $('restart-btn'),
+  homeBtn: $('home-btn'),
   isPaused: false,
   isMusicPaused: false,
   raf: null,
@@ -26,6 +30,7 @@ const state = {
   arrowLeft: false,
   arrowRight: false,
   layers: {},
+  music: null,
   // Reuse one sound object for brick hits instead of creating Audio every collision.
   hitSound: new Audio('./assets/paddle.wav'),
 
@@ -34,8 +39,9 @@ const state = {
   },
 };
 const music = new Audio('./assets/K.O..mp3');
-music.volume=0.1
-music.loop=true
+music.volume = 0.1;
+music.loop = true;
+state.music = music;
 // buttons
 $('play').addEventListener('click', () => {
   // Start music after a click so the browser does not block autoplay.

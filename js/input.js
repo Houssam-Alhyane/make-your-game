@@ -1,6 +1,15 @@
 import { startLoop } from './loop.js';
 
 export function setupInput(state) {
+  // function to set the paused state and update the pause menu visibility
+  const setPaused = (paused) => {
+    state.isPaused = paused;
+    if (state.music) {
+      state.isPaused ? state.music.pause() : state.music.play();
+    }
+    state.pauseMenu.style.display = state.isPaused ? 'flex' : 'none';
+  };
+
   document.addEventListener('keydown', (e) => {
     if (e.key === ' ' && state.waiting) {
       state.waiting = false;
@@ -8,9 +17,8 @@ export function setupInput(state) {
       startLoop(state);
     }
     // Pause the game when the user presses Escape or P.
-    if (e.key === 'Escape' || e.key === 'p') {
-      state.isPaused = !state.isPaused;
-      state.isPaused ? music.pause() : music.play();
+    if (e.key === 'Escape' || e.key.toLowerCase() === 'p') {
+      setPaused(!state.isPaused);
     }
 
     if (e.key === 'ArrowRight') state.arrowRight = true;
@@ -22,8 +30,13 @@ export function setupInput(state) {
     if (e.key === 'ArrowLeft') state.arrowLeft = false;
   });
 
+  // Settings button to pause the game and show the pause menu
   state.settings.addEventListener('click', () => {
-    state.isPaused = !state.isPaused;
-    state.isPaused ? music.pause() : music.play();
+    setPaused(!state.isPaused);
+  });
+
+  // Resume button in the pause menu
+  state.resumeBtn.addEventListener('click', () => {
+    setPaused(false);
   });
 }
