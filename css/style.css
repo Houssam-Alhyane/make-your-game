@@ -165,7 +165,10 @@ button {
   border: 1.5px solid #2a2a4a;
   color: #cfcfdd;
   font-size: 0.95rem;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.15s;
 }
 button img {
   height: 20px;
@@ -186,3 +189,25 @@ button:hover {
     opacity: 1;
   }
 }
+#header-container {
+  width: 100%;
+  border: 1.5px solid #2a2a4a;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 8px 0;
+  border-radius: 8px;
+}
+#settings-btn {
+  all: unset;
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+}
+
+#settings-btn:hover {
+  scale: 1.05;
+  cursor: pointer;
+}
+
+
+
