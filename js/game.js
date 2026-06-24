@@ -15,7 +15,9 @@ const state = {
   game: $('game-container'),
   over: $('final-game-container'),
   overTitle: $('final-game-title'),
-
+  settings: $('settings-btn'),
+  isPaused: false,
+  isMusicPaused: false,
   raf: null,
   waiting: true,
   ballSpeed: 5.7,
