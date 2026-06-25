@@ -10,6 +10,7 @@ export function init(state) {
   state.dy = arr[Math.floor(Math.random() * arr.length)];
   state.arrowLeft = false;
   state.arrowRight = false;
+  state.elapsedTime = 0;
 
   state.scoreEl.innerHTML = '0';
   state.ball.style.cssText = '';

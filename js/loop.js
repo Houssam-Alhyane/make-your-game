@@ -1,13 +1,16 @@
+import { updateTimer } from './actions.js';
 import { hitPaddle, hitBricks } from './collision.js';
 import { resetBall } from './init.js';
 
 export function startLoop(state) {
   const { ball, breaker, field, over, overTitle, scoreEl, layers } = state;
-
+  state.lastTime = Date.now();
   function loop() {
-    if (state.isPaused) {
-      state.raf = requestAnimationFrame(loop);
-      return;
+    if (state.isPaused) return (state.raf = requestAnimationFrame(loop));
+    if (!state.waiting) {
+      state.elapsedTime += Date.now() - state.lastTime;
+      updateTimer(state);
+      state.lastTime = Date.now();
     }
     const W = field.getBoundingClientRect().width;
     const H = field.getBoundingClientRect().height;

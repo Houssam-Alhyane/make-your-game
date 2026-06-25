@@ -202,13 +202,27 @@ button:hover {
   all: unset;
   width: 40px;
   height: 40px;
-  margin-left: 16px;
+  margin-left: 20px;
 }
 
 #settings-btn:hover {
   scale: 1.05;
   cursor: pointer;
 }
+
+#header-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+#timer {
+  all: unset;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
 #pause-menu {
   display: none;
   flex-direction: column;
