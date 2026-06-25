@@ -1,8 +1,15 @@
 import { init } from './init.js';
+import { startLoop } from './loop.js';
 
 // function to set the paused state and update the pause menu visibility
 export function setPause(state) {
   state.isPaused = !state.isPaused;
+  // stop requestAnimationFrame when paused and resume when unpaused
+  if (state.isPaused) {
+    cancelAnimationFrame(state.raf);
+  } else {
+    state.raf = requestAnimationFrame(() => startLoop(state));
+  }
   if (state.music) {
     state.isPaused ? state.music.pause() : state.music.play();
   }
