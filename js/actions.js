@@ -5,11 +5,12 @@ import { startLoop } from './loop.js';
 export function setPause(state) {
   if (state.game.style.display === 'flex') {
     state.isPaused = state.isPaused ? false : true;
+
+    if (state.music) {
+      state.isPaused ? state.music.pause() : state.music.play();
+    }
+    state.pauseMenu.style.display = state.isPaused ? 'flex' : 'none';
   }
-  if (state.music) {
-    state.isPaused ? state.music.pause() : state.music.play();
-  }
-  state.pauseMenu.style.display = state.isPaused ? 'flex' : 'none';
 }
 
 // function to restart the game
@@ -24,6 +25,7 @@ export function toHomeScreen(state) {
   state.home.style.display = 'flex';
   state.over.style.display = 'none';
   state.game.style.display = 'none';
+  state.music.pause();
 }
 // function to format time in mm:ss format
 function formatTime(ms) {
