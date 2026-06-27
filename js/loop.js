@@ -1,4 +1,4 @@
-import { updateTimer } from './actions.js';
+import { toWinScreen, updateTimer } from './actions.js';
 import { hitPaddle, hitBricks } from './collision.js';
 import { resetBall } from './init.js';
 
@@ -66,10 +66,7 @@ export function startLoop(state) {
     state.dy = (state.dy / speed) * state.ballSpeed;
     // win check
     if (!document.getElementsByClassName('brick').length) {
-      overTitle.innerText = 'You Win!';
-      over.style.display = 'flex';
-      cancelAnimationFrame(state.raf);
-      return;
+      toWinScreen(state);
     }
 
     // Only write paddle position while moving, and keep it inside the field.

@@ -27,6 +27,7 @@ export function init(state) {
   state.home.style.display = 'none';
   state.over.style.display = 'none';
   state.game.style.display = 'flex';
+  state.win.style.display = 'none';
   state.prompt.style.display = 'flex';
 }
 

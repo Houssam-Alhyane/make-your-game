@@ -267,7 +267,8 @@ button:hover {
   scale: 1.04;
   cursor: pointer;
 }
-#over-container {
+#over-container,
+#win-container {
   all: unset;
   height: 100vh;
   width: 100%;
@@ -279,21 +280,25 @@ button:hover {
   background: rgba(5, 5, 18, 0.9);
 }
 
-#over-title {
+#over-title,
+#win-title {
   all: unset;
   font-size: 3.5rem;
   color: white;
   font-weight: 500;
-  text-shadow: 0px 0px 10px red;
+}
+#over-title {
+  color: red;
 }
 
-#over-box {
+#win-title {
+  color: green;
+}
+
+#over-box,
+#win-box {
   gap: 10px;
   display: flex;
   flex-direction: column;
   width: 130px;
-}
-
-#win-container {
-  display: none;
 }

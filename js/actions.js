@@ -25,6 +25,7 @@ export function toHomeScreen(state) {
   state.home.style.display = 'flex';
   state.over.style.display = 'none';
   state.game.style.display = 'none';
+  state.win.style.display = 'none';
   state.music.pause();
 }
 // function to format time in mm:ss format
