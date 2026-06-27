@@ -1,4 +1,5 @@
 import { BrickGenerator } from './bricks.js';
+import generateLives from './lives.js';
 
 export function init(state) {
   cancelAnimationFrame(state.raf);
@@ -26,6 +27,8 @@ export function init(state) {
 }
 
 export function resetBall(state) {
+  state.livesCount -= 1;
+  generateLives(state);
   state.ball.style.cssText = '';
   state.breaker.style.cssText = '';
   state.waiting = true;

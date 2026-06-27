@@ -45,10 +45,12 @@ export function toGameOverScreen(state) {
   state.game.style.display = 'none';
   state.over.style.display = 'flex';
   state.overTitle.textContent = `Game Over! Your score: ${state.scoreEl.textContent}`;
+  console.log('Game Over! Your score:', state.scoreEl.textContent);
 }
 
 export function toWinScreen(state) {
   state.game.style.display = 'none';
   state.win.style.display = 'flex';
   state.winTitle.textContent = `You Win! Your score: ${state.scoreEl.textContent}`;
+  console.log('You Win! Your score:', state.scoreEl.textContent);
 }
