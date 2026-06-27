@@ -1,9 +1,13 @@
 import { BrickGenerator } from './bricks.js';
-import generateLives from './lives.js';
+import generateLives, { substractLives } from './lives.js';
 
 export function init(state) {
   cancelAnimationFrame(state.raf);
+  state.timer.textContent = "05:00";
   state.waiting = true;
+  state.livesCount = 3;
+  generateLives(state);
+
   // Reset the base speed whenever a new game starts.
   state.ballSpeed = 5.7;
   const arr = [4, -4];
@@ -27,8 +31,7 @@ export function init(state) {
 }
 
 export function resetBall(state) {
-  state.livesCount -= 1;
-  generateLives(state);
+  substractLives(state);
   state.ball.style.cssText = '';
   state.breaker.style.cssText = '';
   state.waiting = true;

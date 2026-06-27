@@ -16,3 +16,11 @@ export default function generateLives(state) {
     livesContainer.appendChild(lifeIcon);
   }
 }
+
+export function substractLives(state) {
+  state.livesCount -= 1;
+  state.livesContainer.removeChild(state.livesContainer.lastChild);
+  if (state.livesCount <= 0) {
+    toGameOverScreen(state);
+  }
+}

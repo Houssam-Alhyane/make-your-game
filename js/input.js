@@ -33,12 +33,16 @@ export function setupInput(state) {
   });
 
   //Restart button in the pause menu
-  state.restartBtn.addEventListener('click', () => {
-    restart(state);
+  state.restartBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      restart(state);
+    });
   });
 
   // Home button in the pause menu
-  state.homeBtn.addEventListener('click', () => {
-    toHomeScreen(state);
+  state.homeBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      toHomeScreen(state);
+    });
   });
 }

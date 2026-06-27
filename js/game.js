@@ -3,7 +3,7 @@ import { init } from './init.js';
 import { setupInput } from './input.js';
 
 const $ = (id) => document.getElementById(id);
-
+const $$ = (selector) => document.querySelectorAll(selector);
 // shared state object passed to every module
 const state = {
   ball: $('ball'),
@@ -23,9 +23,9 @@ const state = {
   lastTime: null,
   timeElapsed: 0,
   pauseMenu: $('pause-menu'),
-  resumeBtn: $('resume-btn'),
-  restartBtn: $('restart-btn'),
-  homeBtn: $('home-btn'),
+  resumeBtn: $('resume-btn'), 
+  restartBtn: $$('.restart-btn'),
+  homeBtn: $$('.home-btn'),
   livesContainer: $('header-right'),
   isPaused: false,
   isMusicPaused: false,
