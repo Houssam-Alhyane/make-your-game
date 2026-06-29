@@ -283,9 +283,12 @@ button:hover {
 #over-title,
 #win-title {
   all: unset;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   color: white;
   font-weight: 500;
+  max-width: min(90vw, 700px);
+  text-align: center;
+  line-height: 1.1;
 }
 #over-title {
   color: red;

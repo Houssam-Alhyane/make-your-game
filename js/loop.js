@@ -67,6 +67,7 @@ export function startLoop(state) {
     // win check
     if (!document.getElementsByClassName('brick').length) {
       toWinScreen(state);
+      return;
     }
 
     // Only write paddle position while moving, and keep it inside the field.

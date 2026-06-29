@@ -57,7 +57,8 @@ export function hitBricks(state, b2, layers, scoreEl) {
       brick.remove();
       row.splice(i, 1);
       // Score is plain text, so textContent is safer than innerHTML
-      scoreEl.textContent = Number(scoreEl.textContent) + 50;
+      state.score += 50;
+      scoreEl.textContent = state.score;
       hitAny = true;
     }
   }

@@ -17,12 +17,13 @@ export function init(state) {
   state.arrowRight = false;
   state.elapsedTime = 0;
 
-  state.scoreEl.innerHTML = '0';
+  state.score = 0;
+  state.scoreEl.textContent = '0';
   state.ball.style.cssText = '';
   state.breaker.style.cssText = '';
 
   for (const b of [...document.getElementsByClassName('brick')]) b.remove();
-  state.layers = BrickGenerator();
+  state.layers = BrickGenerator(state.brickRows, state.brickCols);
 
   state.home.style.display = 'none';
   state.over.style.display = 'none';

@@ -36,7 +36,7 @@ function formatTime(ms) {
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-// function to
+// function to updateTimer
 export function updateTimer(state) {
   const timeRemaining = state.cooldown - state.elapsedTime;
   if (timeRemaining <= 0) {
@@ -49,13 +49,13 @@ export function updateTimer(state) {
 export function toGameOverScreen(state) {
   state.game.style.display = 'none';
   state.over.style.display = 'flex';
-  state.overTitle.textContent = `Game Over! Your score: ${state.scoreEl.textContent}`;
-  console.log('Game Over! Your score:', state.scoreEl.textContent);
+  state.overTitle.textContent = `Game Over! Your score: ${state.score}`;
+  console.log('Game Over! Your score:', state.score);
 }
 
 export function toWinScreen(state) {
   state.game.style.display = 'none';
   state.win.style.display = 'flex';
-  state.winTitle.textContent = `You Win! Your score: ${state.scoreEl.textContent}`;
-  console.log('You Win! Your score:', state.scoreEl.textContent);
+  state.winTitle.textContent = `You Win! Your score: ${state.score}`;
+  console.log('You Win! Your score:', state.score);
 }

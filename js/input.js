@@ -2,12 +2,15 @@ import { restart, setPause, toHomeScreen } from './actions.js';
 import { startLoop } from './loop.js';
 
 export function setupInput(state) {
+  const startGame = () => {
+    if (!state.waiting) return;
+    state.waiting = false;
+    state.prompt.style.display = 'none';
+    startLoop(state);
+  };
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === ' ' && state.waiting) {
-      state.waiting = false;
-      state.prompt.style.display = 'none';
-      startLoop(state);
-    }
+    if (e.key === ' ') startGame();
     // Pause the game when the user presses Escape or P.
     if (e.key === 'Escape' || e.key.toLowerCase() === 'p') {
       setPause(state);
@@ -21,6 +24,8 @@ export function setupInput(state) {
     if (e.key === 'ArrowRight') state.arrowRight = false;
     if (e.key === 'ArrowLeft') state.arrowLeft = false;
   });
+
+  state.game.addEventListener('click', startGame);
 
   // Settings button to pause the game and show the pause menu
   state.settings.addEventListener('click', () => {
