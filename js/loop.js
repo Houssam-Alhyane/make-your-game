@@ -6,6 +6,10 @@ export function startLoop(state) {
   const { ball, breaker, field, over, overTitle, scoreEl, layers } = state;
   state.lastTime = Date.now();
   function loop() {
+    if (state.end) {
+      cancelAnimationFrame(state.raf);
+      return
+    }
     if (state.isPaused) return (state.raf = requestAnimationFrame(loop));
     if (!state.waiting) {
       state.elapsedTime += Date.now() - state.lastTime;

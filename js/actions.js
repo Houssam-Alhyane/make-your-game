@@ -15,7 +15,7 @@ export function setPause(state) {
 
 // function to restart the game
 export function restart(state) {
-  setPause(state);
+  // setPause(state); i dont know why this is here ? 
   init(state);
 }
 
@@ -47,6 +47,7 @@ export function updateTimer(state) {
 }
 
 export function toGameOverScreen(state) {
+  state.end = true;
   state.game.style.display = 'none';
   state.over.style.display = 'flex';
   state.overTitle.textContent = `Game Over! Your score: ${state.score}`;
@@ -54,6 +55,7 @@ export function toGameOverScreen(state) {
 }
 
 export function toWinScreen(state) {
+  state.end = true;
   state.game.style.display = 'none';
   state.win.style.display = 'flex';
   state.winTitle.textContent = `You Win! Your score: ${state.score}`;

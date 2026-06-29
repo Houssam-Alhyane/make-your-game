@@ -5,6 +5,7 @@ export function init(state) {
   cancelAnimationFrame(state.raf);
   state.timer.textContent = "05:00";
   state.waiting = true;
+  state.end = false;
   state.livesCount = 3;
   generateLives(state);
 
