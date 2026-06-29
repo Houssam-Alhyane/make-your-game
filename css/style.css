@@ -305,3 +305,25 @@ button:hover {
   flex-direction: column;
   width: 130px;
 }
+
+footer {
+  all: unset;
+  text-align: center;
+  color: #8888aa;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 10px;
+  animation: animate 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

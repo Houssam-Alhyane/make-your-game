@@ -25,7 +25,11 @@ export function setupInput(state) {
     if (e.key === 'ArrowLeft') state.arrowLeft = false;
   });
 
-  state.game.addEventListener('click', startGame);
+  state.game.addEventListener('click', (e) => {
+    // Ignore clicks on menu controls so restart/home does not auto-start the loop.
+    if (e.target.closest('.menu-row, #settings-btn, #pause-menu')) return;
+    startGame();
+  });
 
   // Settings button to pause the game and show the pause menu
   state.settings.addEventListener('click', () => {
@@ -39,14 +43,16 @@ export function setupInput(state) {
 
   //Restart button in the pause menu
   state.restartBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       restart(state);
     });
   });
 
   // Home button in the pause menu
   state.homeBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       toHomeScreen(state);
     });
   });

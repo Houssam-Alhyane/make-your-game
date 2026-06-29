@@ -15,7 +15,7 @@ export function setPause(state) {
 
 // function to restart the game
 export function restart(state) {
-  // setPause(state); i dont know why this is here ? 
+  setPause(state);
   init(state);
 }
 
