@@ -13,7 +13,7 @@ export function setupInput(state) {
     if (e.key === ' ') startGame();
     // Pause the game when the user presses Escape or P.
     if (e.key === 'Escape' || e.key.toLowerCase() === 'p') {
-      setPause(state);
+      if (!e.repeat) setPause(state);
     }
 
     if (e.key === 'ArrowRight') state.arrowRight = true;
