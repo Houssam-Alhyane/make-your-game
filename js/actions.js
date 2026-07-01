@@ -21,6 +21,7 @@ export function restart(state) {
 
 // function to go to home screen
 export function toHomeScreen(state) {
+  state.end = true;
   setPause(state);
   state.home.style.display = 'flex';
   state.over.style.display = 'none';
