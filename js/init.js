@@ -13,7 +13,7 @@ export function init(state) {
   state.ballSpeed = 5.7;
   const arr = [4, -4];
   state.dx = arr[Math.floor(Math.random() * arr.length)];
-  state.dy = arr[Math.floor(Math.random() * arr.length)];
+  state.dy = 4;
   state.arrowLeft = false;
   state.arrowRight = false;
   state.elapsedTime = 0;
@@ -42,6 +42,6 @@ export function resetBall(state) {
   state.ballSpeed = 5.7;
   const arr = [4, -4];
   state.dx = arr[Math.floor(Math.random() * arr.length)];
-  state.dy = arr[Math.floor(Math.random() * arr.length)];
+  state.dy = 4;
   state.prompt.style.display = 'flex';
 }

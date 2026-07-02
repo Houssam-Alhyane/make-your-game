@@ -18,7 +18,6 @@ export function startLoop(state) {
     }
     const W = field.clientWidth;
     const H = field.clientHeight;
-    console.log(W, H)
     const bp = state.toField(ball.getBoundingClientRect());
     const pp = state.toField(breaker.getBoundingClientRect());
 

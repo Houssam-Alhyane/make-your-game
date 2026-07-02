@@ -10,7 +10,7 @@ export function setupInput(state) {
   };
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === ' ') startGame();
+    if (e.key === ' ' && state.prompt.style.display === 'flex') startGame();
     // Pause the game when the user presses Escape or P.
     if (e.key === 'Escape' || e.key.toLowerCase() === 'p') {
       if (!e.repeat) setPause(state);
