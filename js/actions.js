@@ -4,10 +4,13 @@ import { startLoop } from './loop.js';
 // function to set the paused state and update the pause menu visibility
 export function setPause(state) {
   if (state.game.style.display === 'flex') {
-    state.isPaused = state.isPaused ? false : true;
+    state.isPaused = !state.isPaused;
 
     if (state.music) {
       state.isPaused ? state.music.pause() : state.music.play();
+    }
+    if (!state.isPaused) {
+      state.lastTime = Date.now();
     }
     state.pauseMenu.style.display = state.isPaused ? 'flex' : 'none';
   }
