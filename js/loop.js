@@ -16,8 +16,9 @@ export function startLoop(state) {
       updateTimer(state);
       state.lastTime = Date.now();
     }
-    const W = field.getBoundingClientRect().width;
-    const H = field.getBoundingClientRect().height;
+    const W = field.clientWidth;
+    const H = field.clientHeight;
+    console.log(W, H)
     const bp = state.toField(ball.getBoundingClientRect());
     const pp = state.toField(breaker.getBoundingClientRect());
 
