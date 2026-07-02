@@ -18,8 +18,11 @@ export default function generateLives(state) {
 }
 
 export function substractLives(state) {
-  state.livesCount -= 1;
-  state.livesContainer.removeChild(state.livesContainer.lastChild);
+  state.livesCount = Math.max(0, state.livesCount - 1);
+  const lastHeart = state.livesContainer.lastElementChild;
+  if (lastHeart) {
+    state.livesContainer.removeChild(lastHeart);
+  }
   if (state.livesCount <= 0) {
     toGameOverScreen(state);
   }
