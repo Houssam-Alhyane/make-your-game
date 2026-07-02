@@ -21,7 +21,7 @@ const state = {
   timer: $('timer'),
   cooldown: 1000 * 60 * 5,
   lastTime: null,
-  timeElapsed: 0,
+  elapsedTime: 0,
   pauseMenu: $('pause-menu'),
   resumeBtn: $('resume-btn'), 
   restartBtn: $$('.restart-btn'),
