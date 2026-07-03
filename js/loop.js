@@ -5,17 +5,21 @@ import { resetBall } from './init.js';
 export function startLoop(state) {
   const { ball, breaker, field, over, overTitle, scoreEl, layers } = state;
   state.lastTime = Date.now();
+
   function loop() {
     if (state.end) {
       cancelAnimationFrame(state.raf);
       return
     }
+    
     if (state.isPaused) return (state.raf = requestAnimationFrame(loop));
+
     if (!state.waiting) {
       state.elapsedTime += Date.now() - state.lastTime;
       updateTimer(state);
       state.lastTime = Date.now();
     }
+
     const W = field.clientWidth;
     const H = field.clientHeight;
     const bp = state.toField(ball.getBoundingClientRect());
@@ -24,23 +28,30 @@ export function startLoop(state) {
     let nx = bp.left + state.dx;
     let ny = bp.top + state.dy;
 
-    // walls heck if the ball touch Edges
+    // walls check if the ball touches Edges
+    //check if touches from rigth
     if (nx + bp.width >= W) {
       nx = W - bp.width;
       state.dx = -Math.abs(state.dx);
-    } //check if touch from rigth
+    }
+
+    //check if touch from left
     if (nx <= 0) {
       nx = 0;
       state.dx = Math.abs(state.dx);
-    } //check if touch from left
+    }
+    
+    //check if touch from top
     if (ny <= 0) {
       ny = 0;
       state.dy = Math.abs(state.dy);
-    } //check if touch from top
+    }
+
+    //check if touch from botom
     if (ny + bp.height >= H) {
       resetBall(state);
       return;
-    } ////check if touch from botom
+    }
 
     // paddle
     state.bp = bp;
@@ -68,6 +79,7 @@ export function startLoop(state) {
     const speed = Math.hypot(state.dx, state.dy) || 1;
     state.dx = (state.dx / speed) * state.ballSpeed;
     state.dy = (state.dy / speed) * state.ballSpeed;
+
     // win check
     if (!document.getElementsByClassName('brick').length) {
       toWinScreen(state);
