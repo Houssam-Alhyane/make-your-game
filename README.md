@@ -12,7 +12,7 @@ Break all the bricks by bouncing the ball with your paddle before you run out of
 - **3 lives** — lose one each time the ball falls
 - **5-minute countdown timer** — clear the field before time runs out
 - Ball speed increases as fewer bricks remain, ramping up the challenge
-
+ 
 ---
 
 ## 🕹️ Controls
