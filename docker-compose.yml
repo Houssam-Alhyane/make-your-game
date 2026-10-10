@@ -2,7 +2,6 @@ name: make-your-game
 
 services:
   make-your-game:
-    build: .
     # Default image (AMD/x86_64).
     image: elmehdirezoug/make-your-game:1.0.0
     # For ARM/arm64 machines use: elmehdirezoug/make-your-game-arm:1.0.0

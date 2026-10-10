@@ -8,35 +8,14 @@
     <title>arkanoid</title>
   </head>
   <body>
-    <div id="home-container">
-      <div id="pc-notice">
-        <span>Intended to be played on a PC</span>
-        <button id="manual-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-circle-help-icon lucide-circle-help"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-            <path d="M12 17h.01" />
-          </svg>
-          <p>Manual</p>
+    <main id="app">
+      <div id="home-container">
+        <img id="logo" src="assets/logo.png" alt="logo" />
+        <button id="play">
+          <img src="assets/play.svg" alt="" />
+          <p>Start Game</p>
         </button>
       </div>
-      <img id="logo" src="assets/logo.png" alt="logo" />
-      <button id="play">
-        <img src="assets/play.svg" alt="" />
-        <p>Start Game</p>
-      </button>
-    </div>
 
     <div id="game-container">
       <div id="header-container">
@@ -146,138 +125,170 @@
     </div>
 
     <div id="win-container">
-      <p id="win-title">You Win!</p>
-      <div id="win-box">
-        <div class="restart-btn menu-row">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"
-            >
-              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M3 3v5h5" />
-            </svg>
-          </button>
-          <p>Restart</p>
+      <div class="result-card win-card">
+        <div class="result-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+            <path d="M4 22h16" />
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+          </svg>
         </div>
-        <div class="home-btn menu-row">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-house-icon lucide-house"
-            >
-              <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-              <path
-                d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-              />
-            </svg>
-          </button>
-          <p>Home</p>
+        <p id="win-title">You Win!</p>
+        <div class="result-score">
+          <span>Final Score</span>
+          <strong id="win-score">0</strong>
+        </div>
+        <div class="result-actions">
+          <div class="restart-btn menu-row">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"
+              >
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+              </svg>
+            </button>
+            <p>Play Again</p>
+          </div>
+          <div class="home-btn menu-row">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-house-icon lucide-house"
+              >
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                <path
+                  d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                />
+              </svg>
+            </button>
+            <p>Home</p>
+          </div>
         </div>
       </div>
     </div>
     <div id="over-container">
-      <p id="over-title">You Lose!</p>
-      <div id="over-box">
-        <div class="restart-btn menu-row">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"
-            >
-              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-              <path d="M3 3v5h5" />
-            </svg>
-          </button>
-          <p>Restart</p>
+      <div class="result-card lose-card">
+        <div class="result-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="9" cy="12" r="1" />
+            <circle cx="15" cy="12" r="1" />
+            <path d="M8 20v2h8v-2" />
+            <path d="m12.5 17-.5-1-.5 1h1z" />
+            <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20" />
+          </svg>
         </div>
-        <div class="home-btn menu-row">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-house-icon lucide-house"
-            >
-              <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-              <path
-                d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-              />
-            </svg>
-          </button>
-          <p>Home</p>
+        <p id="over-title">Game Over</p>
+        <div class="result-score">
+          <span>Final Score</span>
+          <strong id="over-score">0</strong>
+        </div>
+        <div class="result-actions">
+          <div class="restart-btn menu-row">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"
+              >
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+              </svg>
+            </button>
+            <p>Play Again</p>
+          </div>
+          <div class="home-btn menu-row">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-house-icon lucide-house"
+              >
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                <path
+                  d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                />
+              </svg>
+            </button>
+            <p>Home</p>
+          </div>
         </div>
       </div>
     </div>
-    <div id="manual-container">
+    </main>
+
+    <aside id="side-panel">
+      <div id="pc-notice">
+        <span>Intended to be played on a PC</span>
+      </div>
       <div id="manual-box">
         <p id="manual-title">How To Play</p>
         <div class="manual-row">
-          <span>Start / launch ball</span>
-          <span><kbd>Space</kbd> or <kbd>Click</kbd></span>
+          <span>Start ball</span>
+          <span class="keys"><kbd>Space</kbd><span class="or">/</span><kbd>Click</kbd></span>
         </div>
         <div class="manual-row">
           <span>Move paddle</span>
-          <span><kbd>←</kbd> <kbd>→</kbd></span>
+          <span class="keys"><kbd>←</kbd><kbd>→</kbd></span>
         </div>
         <div class="manual-row">
-          <span>Pause / resume</span>
-          <span><kbd>Esc</kbd> or <kbd>P</kbd></span>
-        </div>
-        <div id="manual-close" class="menu-row">
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-x-icon lucide-x"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-          <p>Close</p>
+          <span>Pause</span>
+          <span class="keys"><kbd>Esc</kbd><span class="or">/</span><kbd>P</kbd></span>
         </div>
       </div>
-    </div>
+      <footer>Arkanoid</footer>
+    </aside>
 
     <script type="module" src="js/game.js"></script>
-    <footer>Arkanoid</footer>
   </body>
 </html>
