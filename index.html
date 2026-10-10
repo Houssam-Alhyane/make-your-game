@@ -9,6 +9,28 @@
   </head>
   <body>
     <div id="home-container">
+      <div id="pc-notice">
+        <span>Intended to be played on a PC</span>
+        <button id="manual-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-help-icon lucide-circle-help"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <path d="M12 17h.01" />
+          </svg>
+          <p>Manual</p>
+        </button>
+      </div>
       <img id="logo" src="assets/logo.png" alt="logo" />
       <button id="play">
         <img src="assets/play.svg" alt="" />
@@ -217,6 +239,44 @@
         </div>
       </div>
     </div>
+    <div id="manual-container">
+      <div id="manual-box">
+        <p id="manual-title">How To Play</p>
+        <div class="manual-row">
+          <span>Start / launch ball</span>
+          <span><kbd>Space</kbd> or <kbd>Click</kbd></span>
+        </div>
+        <div class="manual-row">
+          <span>Move paddle</span>
+          <span><kbd>←</kbd> <kbd>→</kbd></span>
+        </div>
+        <div class="manual-row">
+          <span>Pause / resume</span>
+          <span><kbd>Esc</kbd> or <kbd>P</kbd></span>
+        </div>
+        <div id="manual-close" class="menu-row">
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-x-icon lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+          <p>Close</p>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="js/game.js"></script>
     <footer>Arkanoid</footer>
   </body>

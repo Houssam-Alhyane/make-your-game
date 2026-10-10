@@ -31,6 +31,14 @@ export function setupInput(state) {
     startGame();
   });
 
+  // Manual button opens the controls overlay; close button dismisses it.
+  state.manualBtn.addEventListener('click', () => {
+    state.manual.style.display = 'flex';
+  });
+  state.manualClose.addEventListener('click', () => {
+    state.manual.style.display = 'none';
+  });
+
   // Settings button to pause the game and show the pause menu
   state.settings.addEventListener('click', () => {
     setPause(state);

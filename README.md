@@ -71,6 +71,10 @@ Movement is designed to be **smooth and jank-free**: holding a key moves the pad
 │   ├── lives.js           # Lives display & management
 │   ├── loop.js             # Main game loop (requestAnimationFrame)
 │   └── utils.js            # Coordinate/geometry helpers
+├── server.js            # Simple Node.js static server
+├── package.json
+├── Dockerfile
+├── docker-compose.yml
 └── README.md
 ```
 
@@ -93,6 +97,39 @@ Movement is designed to be **smooth and jank-free**: holding a key moves the pad
    ```
 2. Open `index.html` in your browser (or serve it with a local static server).
 3. Press **Play** and use the arrow keys to control the paddle. Good luck!
+
+> **Note:** This game is intended to be played on a PC. On the home screen you'll find a **Manual** button that lists the controls.
+
+### Run with Node
+
+```bash
+npm start
+```
+
+Then open <http://localhost:8080>.
+
+### Run with Docker
+
+```bash
+docker compose up -d
+```
+
+Then open <http://localhost:8080>.
+
+Prebuilt images are published on Docker Hub:
+
+| Image | Platform |
+|---|---|
+| `elmehdirezoug/make-your-game:1.0.0` | AMD/x86_64 (default) |
+| `elmehdirezoug/make-your-game-arm:1.0.0` | ARM/arm64 |
+
+```bash
+# Default (AMD/x86_64)
+docker run -d -p 8080:8080 elmehdirezoug/make-your-game:1.0.0
+
+# ARM/arm64
+docker run -d -p 8080:8080 elmehdirezoug/make-your-game-arm:1.0.0
+```
 
 ---
 
