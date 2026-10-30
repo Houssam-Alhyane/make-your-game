@@ -1,5 +1,7 @@
 # 🧱 Make Your Game — Brick Breaker
 
+> **Live demo:** https://arkanoid.elmehdirezoug.dev
+
 A classic **Brick Breaker / Arkanoid**-style game built entirely with **plain JavaScript, HTML, and CSS** — no frameworks, no canvas. The goal was to build a smooth, high-performance game engine from scratch, running consistently at **60 FPS**.
 
 ---
