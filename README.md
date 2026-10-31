@@ -2,6 +2,12 @@
 
 > **Live demo:** https://arkanoid.elmehdirezoug.dev
 
+## 👥 Authors
+
+- [Ssam (@drawliin)](https://github.com/drawliin)
+- [Elmehdi Rezoug (@zoro-craft)](https://github.com/zoro-craft)
+- [Houssam Alhyane (@Houssam-Alhyane)](https://github.com/Houssam-Alhyane)
+
 A classic **Brick Breaker / Arkanoid**-style game built entirely with **plain JavaScript, HTML, and CSS** — no frameworks, no canvas. The goal was to build a smooth, high-performance game engine from scratch, running consistently at **60 FPS**.
 
 ---
@@ -142,11 +148,3 @@ This project was built with strict performance goals in mind:
 - Consistent **60 FPS**, no frame drops
 - Profiled using browser DevTools (Performance tab, Paint Flashing)
 - Minimal reflows/repaints through careful DOM updates and layer usage
-
----
-
-## 👥 Authors
-
-- [hhamouich](https://learn.zone01oujda.ma/intra/oujda/users/11045)
-- [erezzoug](https://learn.zone01oujda.ma/intra/oujda/users/11591)
-- [halhyane](https://learn.zone01oujda.ma/intra/oujda/users/10310)
