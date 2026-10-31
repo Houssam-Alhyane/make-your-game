@@ -4,7 +4,7 @@
 
 ## 👥 Authors
 
-- [Ssam (@drawliin)](https://github.com/drawliin)
+- [Houssam Eddine Hamouich (@drawliin)](https://github.com/drawliin)
 - [Elmehdi Rezoug (@zoro-craft)](https://github.com/zoro-craft)
 - [Houssam Alhyane (@Houssam-Alhyane)](https://github.com/Houssam-Alhyane)
 
